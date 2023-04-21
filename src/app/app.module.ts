@@ -11,6 +11,8 @@ import { GalerieComponent } from './galerie/galerie.component';
 import { ContactComponent } from './contact/contact.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { HomeComponent } from './home/home.component';
+import { CarteComponent } from './carte/carte.component';
+import { MenusComponent } from './menus/menus.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { HomeComponent } from './home/home.component';
     GalerieComponent,
     ContactComponent,
     ReservationComponent,
-    HomeComponent
+    HomeComponent,
+    CarteComponent,
+    MenusComponent
   ],
   imports: [
     BrowserModule,
