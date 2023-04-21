@@ -1,1 +1,24 @@
-<p>navbar works!</p>
+<nav class="row col-sm justify-content-center navbar ">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link " routerLink="accueil" routerLinkActive="active-link">Accueil</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="carte" routerLinkActive="active-link">Notre carte</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="menus" routerLinkActive="active-link"> Nos menus</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="contact" routerLinkActive="active-link">Contact</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="souscription" routerLinkActive="active-link">Créer un compte</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="login" routerLinkActive="active-link">Se connecter</a>
+    </li>
+  </ul>
+<router-outlet></router-outlet>
+</nav>
+

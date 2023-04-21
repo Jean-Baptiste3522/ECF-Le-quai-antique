@@ -3,34 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { TitleComponent } from './title/title.component';
-import { SignupComponent } from './signup/signup.component';
-import { GalerieComponent } from './galerie/galerie.component';
-import { ContactComponent } from './contact/contact.component';
-import { ReservationComponent } from './reservation/reservation.component';
-import { HomeComponent } from './home/home.component';
-import { CarteComponent } from './carte/carte.component';
-import { MenusComponent } from './menus/menus.component';
+import { HeaderModule } from './Modules/header/header.module';
+import { SignupModule } from './Modules/signup/signup.module';
+import { GalerieModule } from './Modules/galerie/galerie.module';
+import { ReservationModule } from './Modules/reservation/reservation.module';
+import { HomeModule } from './Modules/home/home.module';
+import { CarteModule } from './Modules/carte/carte.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    NavbarComponent,
-    TitleComponent,
-    SignupComponent,
-    GalerieComponent,
-    ContactComponent,
-    ReservationComponent,
-    HomeComponent,
-    CarteComponent,
-    MenusComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule,AppRoutingModule,HeaderModule,SignupModule ,GalerieModule,ReservationModule,HomeModule,CarteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
