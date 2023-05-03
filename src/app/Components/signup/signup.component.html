@@ -1,1 +1,22 @@
-<p>signup works!</p>
+<div class="row col-sm justify-content-center">
+  <h2 class="row col-sm justify-content-center">Créer un compte</h2>
+  <form [formGroup]="signUpForm" (ngSubmit)="signup()" novalidate>
+    <div class="formGroup">
+      <label for="email">Adresse mail</label>
+      <input type="email" class="form-control" formControlName="email">
+      <div *ngIf="signUpForm.controls['email'].invalid && (signUpForm.controls['email'].dirty || signUpForm.controls['email'].touched)">
+        <small class="form-text text-danger" *ngIf="signUpForm.controls['email'].errors?.['required']">Veuillez entrer une adresse mail</small>
+        <small class="form-text text-danger" *ngIf="signUpForm.controls['email'].errors?.['email']">Veuillez entrer une adresse mail valide</small>
+      </div>
+    </div>
+    <div class="formGroup">
+      <label for="password">Mot de passe</label>
+      <input type="password" class="form-control" formControlName="password">
+      <div *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)">
+        <small class="form-text text-danger" *ngIf="signUpForm.controls['password'].errors?.['required']">Veuillez entrer un mot de passe</small>
+        <small class="form-text text-danger" *ngIf="signUpForm.controls['password'].errors?.['minlength']">Le mot de passe doit contenir au moins 7 caractères</small>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Créer mon compte</button>
+  </form>
+</div>
