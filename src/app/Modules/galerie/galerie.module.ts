@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GalerieComponent } from 'src/app/Components/galerie/galerie.component';
-
+import { ImageGalleryComponent } from 'src/app/Components/image-gallery/image-gallery.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [GalerieComponent],
+  declarations: [ImageGalleryComponent],
   imports: [
-    CommonModule
+    CommonModule,RouterModule
   ],
-  exports: [GalerieComponent]
+  exports: [ImageGalleryComponent]
 })
 export class GalerieModule { }

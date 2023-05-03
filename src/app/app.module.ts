@@ -14,12 +14,14 @@ import { CarteModule } from './Modules/carte/carte.module';
 import { LoginModule } from './Modules/login/login.module';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
-    BrowserModule,AppRoutingModule,HttpClientModule,ReactiveFormsModule,LoginModule,HeaderModule,SignupModule,GalerieModule,ReservationModule,HomeModule,CarteModule
+    BrowserModule,AppRoutingModule,HttpClientModule,ReactiveFormsModule,LoginModule,GalerieModule,HeaderModule,SignupModule,ReservationModule,HomeModule,CarteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

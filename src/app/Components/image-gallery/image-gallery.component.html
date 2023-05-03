@@ -1,0 +1,14 @@
+<div class="gallery">
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let image of images">
+      <a [routerLink]="['/image', image.id]">
+        <img src="{{ image.url }}" class="img-fluid">
+        <div class="overlay">
+          <div class="text">{{ image.title }}</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<p>efefef</p>

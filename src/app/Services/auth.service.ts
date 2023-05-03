@@ -38,4 +38,14 @@ export class AuthService {
       })
     )
   }
+  isAdmin(): boolean {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.role === 'admin';
+    } else {
+      return false;
+    }
+  }
+
 }
