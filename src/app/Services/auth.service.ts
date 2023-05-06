@@ -34,10 +34,22 @@ export class AuthService {
       tap(response => {
         if (response.token) {
           this.token = response.token;
+          localStorage.setItem('token', response.token); // Nouvelle ligne
         }
       })
     )
   }
+
+  logout(): void { // Nouvelle méthode
+    this.token = '';
+    localStorage.removeItem('token');
+  }
+
+  isAuthenticated(): boolean { // Nouvelle méthode
+    const token = localStorage.getItem('token');
+    return token ? true : false;
+  }
+
   isAdmin(): boolean {
     const token = localStorage.getItem('token');
     if (token) {
@@ -47,5 +59,4 @@ export class AuthService {
       return false;
     }
   }
-
 }

@@ -1,1 +1,39 @@
-<h1 class="row col-sm justify-content-center">Notre carte</h1>
+<div *ngIf="isAdmin">
+  <a routerLink="/edit-carte">Modifier la carte</a>
+</div>
+<div *ngIf="!isAdmin">
+  <h2 class="row col-sm justify-content-center">Notre Carte</h2>
+  <div class="container">
+    <div class="row">
+      <div class="justify-content-center">
+        <h3 class="row justify-content-center">Entrées</h3>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let carte of cartes | carteFilter: 'Entrée' | slice:0:3">
+            <h4>{{ carte.titre }}</h4>
+            <p>{{ carte.description }}</p>
+            <p>Prix: {{ carte.prix }} €</p>
+          </li>
+        </ul>
+      </div>
+      <div class="justify-content-center">
+       <h3 class="row justify-content-center">Plats</h3>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let carte of cartes | carteFilter: 'Plat' | slice:0:3">
+            <h4>{{ carte.titre }}</h4>
+            <p>{{ carte.description }}</p>
+            <p>Prix: {{ carte.prix }} €</p>
+          </li>
+        </ul>
+      </div>
+      <div class="justify-content-center">
+        <h3 class="row justify-content-center">Desserts</h3>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let carte of cartes | carteFilter: 'Dessert' | slice:0:3">
+            <h4>{{ carte.titre }}</h4>
+            <p>{{ carte.description }}</p>
+            <p>Prix: {{ carte.prix }} €</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
