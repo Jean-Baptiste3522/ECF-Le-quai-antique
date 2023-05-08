@@ -18,16 +18,18 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { MenusModule } from './Modules/menus/menus.module';
 
+import { HoraireModule } from './Modules/horaire/horaire.module';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
 
 
   ],
   imports: [
-    BrowserModule,CommonModule,AppRoutingModule,HttpClientModule,ReactiveFormsModule,LoginModule,GalerieModule,HeaderModule,SignupModule,ReservationModule,HomeModule,CarteModule,MenusModule
+    BrowserModule,CommonModule,AppRoutingModule,HttpClientModule,ReactiveFormsModule,HoraireModule,LoginModule,GalerieModule,HeaderModule,SignupModule,ReservationModule,HomeModule,CarteModule,MenusModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],

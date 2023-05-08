@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="text-center"><p [ngClass]="{'red-text': true}">Nos</p>Horaires d'Ouverture</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jour</th>
+        <th>Heure d'ouverture</th>
+        <th>Heure de fermeture</th>
+        <th *ngIf="isAdmin">Modifier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let horaire of horaires">
+        <td>{{ horaire.jour }}</td>
+        <td [ngClass]="{'red-text': true}">{{ horaire.heureOuverture }}</td>
+        <td [ngClass]="{'red-text': true}">{{ horaire.heureFermeture }}</td>
+        <td *ngIf="isAdmin">
+          <form (submit)="setHoraire(horaire.jour, horaire.heureOuverture, horaire.heureFermeture)">
+            <div class="form-group">
+              <label for="jour">Jour :</label>
+              <input type="text" class="form-control" id="jour" name="jour" value="{{ horaire.jour }}" readonly>
+            </div>
+            <div class="form-group">
+              <label for="heureOuverture">Heure d'ouverture :</label>
+              <input type="text" class="form-control" id="heureOuverture" name="heureOuverture" value="{{ horaire.heureOuverture }}">
+            </div>
+            <div class="form-group">
+              <label for="heureFermeture">Heure de fermeture :</label>
+              <input type="text" class="form-control" id="heureFermeture" name="heureFermeture" value="{{ horaire.heureFermeture }}">
+            </div>
