@@ -1,39 +1,21 @@
-<div *ngIf="isAdmin">
-  <a routerLink="/edit-carte">Modifier la carte</a>
+<h1 class="row col-sm justify-content-center">Notre Carte</h1>
+<h2 class="row col-sm justify-content-center">Entrées</h2>
+<div *ngFor="let carte of cartes | filter: 'entrée'">
+  <p class="row col-sm justify-content-center">{{carte.nom}} - {{carte.prix}} €</p>
+  <button *ngIf="canEdit()" (click)="updateCarte(carte.id, carte.nom, carte.prix)">Modifier</button>
+  <button *ngIf="canEdit()" (click)="deleteCarte(carte.id)">Supprimer</button>
 </div>
-<div *ngIf="!isAdmin">
-  <h2 class="row col-sm justify-content-center">Notre Carte</h2>
-  <div class="container">
-    <div class="row">
-      <div class="justify-content-center">
-        <h3 class="row justify-content-center">Entrées</h3>
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let carte of cartes | carteFilter: 'Entrée' | slice:0:3">
-            <h4>{{ carte.titre }}</h4>
-            <p>{{ carte.description }}</p>
-            <p>Prix: {{ carte.prix }} €</p>
-          </li>
-        </ul>
-      </div>
-      <div class="justify-content-center">
-       <h3 class="row justify-content-center">Plats</h3>
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let carte of cartes | carteFilter: 'Plat' | slice:0:3">
-            <h4>{{ carte.titre }}</h4>
-            <p>{{ carte.description }}</p>
-            <p>Prix: {{ carte.prix }} €</p>
-          </li>
-        </ul>
-      </div>
-      <div class="justify-content-center">
-        <h3 class="row justify-content-center">Desserts</h3>
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let carte of cartes | carteFilter: 'Dessert' | slice:0:3">
-            <h4>{{ carte.titre }}</h4>
-            <p>{{ carte.description }}</p>
-            <p>Prix: {{ carte.prix }} €</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+
+<h2 class="row col-sm justify-content-center">Plats</h2>
+<div *ngFor="let carte of cartes | filter: 'plat'">
+  <p class="row col-sm justify-content-center">{{carte.nom}} - {{carte.prix}} €</p>
+  <button *ngIf="canEdit()" (click)="updateCarte(carte.id, carte.nom, carte.prix)">Modifier</button>
+  <button *ngIf="canEdit()" (click)="deleteCarte(carte.id)">Supprimer</button>
+</div>
+
+<h2 class="row col-sm justify-content-center">Desserts</h2>
+<div *ngFor="let carte of cartes | filter: 'dessert'">
+  <p class="row col-sm justify-content-center">{{carte.nom}} - {{carte.prix}} €</p>
+  <button *ngIf="canEdit()" (click)="updateCarte(carte.id, carte.nom, carte.prix)">Modifier</button>
+  <button *ngIf="canEdit()" (click)="deleteCarte(carte.id)">Supprimer</button>
+</div>

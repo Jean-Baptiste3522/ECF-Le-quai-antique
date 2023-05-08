@@ -1,1 +1,9 @@
-<p class="row col-sm justify-content-center">Nos menus</p>
+<h1 class="row col-sm justify-content-center">Nos menus</h1>
+<div *ngFor="let menu of menu">
+  <h2 class="row col-sm justify-content-center">{{ menu.titre }}</h2>
+  <ul>
+    <li class="row col-sm justify-content-center" *ngFor="let formule of menu.formules">
+      {{ formule.nom }}: {{ formule.description }} ({{ formule.prix }} €)
+    </li>
+  </ul>
+</div>

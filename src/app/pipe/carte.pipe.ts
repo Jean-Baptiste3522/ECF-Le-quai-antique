@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Carte } from '../Models/carte';
 
 @Pipe({
-  name: 'carteFilter'
+  name: 'filter'
 })
 export class CartePipe implements PipeTransform {
 

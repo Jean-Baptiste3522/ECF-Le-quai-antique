@@ -1,48 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { Carte } from 'src/app/Models/carte';
 import { CarteService } from 'src/app/Services/carte.service';
-import { AuthService } from 'src/app/Services/auth.service';
-import { CartePipe } from 'src/app/pipe/carte.pipe';
+import { Carte } from 'src/app/Models/carte';
 
 @Component({
   selector: 'app-carte',
   templateUrl: './carte.component.html',
-  styleUrls: ['./carte.component.css'],
-
+  styleUrls: ['./carte.component.css']
 })
 export class CarteComponent implements OnInit {
-  isAdmin: boolean = false;
-  carte?: Carte;
+
   cartes: Carte[] = [];
+  isAdmin = false;
 
-  constructor(
-    private authService: AuthService,
-    private carteService: CarteService,
-    private route: ActivatedRoute,
-    private location: Location
-  ) { }
+  constructor(private carteService: CarteService) { }
 
-  ngOnInit() {
-    this.isAdmin = this.authService.isAdmin();
-    this.getCarte();
+  ngOnInit(): void {
+    this.cartes = this.carteService.getListe();
   }
 
-  getCarte(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.carteService.getCarte(id)
-      .subscribe(carte => this.carte = carte);
+  canEdit(): boolean {
+    return this.isAdmin === true;
   }
 
-  goBack(): void {
-    this.location.back();
+  updateCarte(id: number, nom: string, prix: number): void {
+    this.carteService.updateCarte(id, { nom, prix });
   }
 
-  save(): void {
-    if (this.carte) {
-      this.carteService.updateCarte(this.carte.id, this.carte)
-        .subscribe(() => this.goBack());
-    }
+  deleteCarte(id: number): void {
+    this.carteService.deleteCarte(id);
+    this.cartes = this.carteService.getListe();
   }
+
 }

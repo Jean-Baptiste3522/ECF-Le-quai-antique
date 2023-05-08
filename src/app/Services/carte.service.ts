@@ -1,49 +1,48 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 import { Carte } from '../Models/carte';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarteService {
+  isAdmin = true;
+  cartes: Carte[] = [
+    { id: 1, nom: 'Salade de tomates et mozzarella', prix: 12, categorie: 'entrée' },
+    { id: 2, nom: 'Soupe à l\'oignon', prix: 12, categorie:'entrée' },
+    { id: 3, nom: 'Foie gras et sa confiture de figues', prix: 12, categorie:'entrée' },
+    { id: 4, nom: 'Magret de canard, sauce au miel', prix: 20, categorie: 'plat' },
+    { id: 5, nom: 'Tartare de boeuf, frites maison', prix: 20,categorie: 'plat' },
+    { id: 6, nom: 'Risotto aux champignons', prix: 20, categorie: 'plat' },
+    { id: 7, nom: 'Tiramisu', prix: 12, categorie: 'dessert' },
+    { id: 8, nom: 'Crème brûlée', prix: 12, categorie: 'dessert' },
+    { id: 9, nom: 'Tarte Tatin', prix: 12, categorie: 'dessert' },
+  ];
 
-  private apiURL = 'http://localhost:3307';
+  constructor() { }
 
-  constructor(private http: HttpClient) { }
-  getCarte(id: number): Observable<Carte> {
-    const token = localStorage.getItem('currentUser');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Carte>(`${this.apiURL}/cartes/${id}`, { headers }).pipe(
-      catchError((error) => {
-        console.error(error);
-        return throwError(error);
-        })
-      );
-  }
-  updateCarte(id: number, data: any): Observable<any> {
-    const token = localStorage.getItem('currentUser');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.put(`${this.apiURL}/cartes/${id}`, data, { headers })
-      .pipe(
-        catchError((error) => {
-          console.error(error);
-          return [];
-        })
-      );
-  }
-  deleteCarte(id: number): Observable<any> {
-    const token = localStorage.getItem('currentUser');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.delete(`${this.apiURL}/cartes/${id}`, { headers })
-      .pipe(
-        catchError((error) => {
-          console.error(error);
-          return [];
-        })
-      );
+  getCarte(id: number): Carte | undefined {
+    return this.cartes.find(carte => carte.id === id);
   }
 
+  updateCarte(id: number, data: any): void {
+    const index = this.cartes.findIndex(carte => carte.id === id);
+    if (index !== -1) {
+      this.cartes[index] = { ...this.cartes[index], ...data };
+    }
+  }
+
+  deleteCarte(id: number): void {
+    const index = this.cartes.findIndex(carte => carte.id === id);
+    if (index !== -1) {
+      this.cartes.splice(index, 1);
+    }
+  }
+
+  getListe(): Carte[] {
+    return this.cartes;
+  }
+
+  canEdit(): boolean {
+    return this.isAdmin;
+  }
 }

@@ -1,7 +1,6 @@
 export interface Carte {
   id: number;
-  titre: string;
-  description: string;
+  nom: string;
   prix: number;
   categorie: string;
 }
