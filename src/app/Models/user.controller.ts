@@ -1,4 +1,4 @@
-import express from 'express';
+import * as express from 'express';
 import UserModel from './user.model';
 
 const app = express();
@@ -9,9 +9,11 @@ app.get('/users', async (req, res) => {
 });
 
 app.post('/users', async (req, res) => {
-  const user = await UserModel.create(req.body);
+  const { email, password, allergies } = req.body;
+  const user = await UserModel.create({ email, password, allergies });
   res.json(user);
 });
+
 
 app.put('/users/:id', async (req, res) => {
   const user = await UserModel.findByPk(req.params.id);

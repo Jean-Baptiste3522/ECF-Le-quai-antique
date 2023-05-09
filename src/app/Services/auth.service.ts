@@ -22,11 +22,12 @@ export class AuthService {
 
   constructor(private http: HttpClient, private errorHandlerService: ErrorHandlerService) { }
 
-  signup(user: Omit<User, "id">): Observable<User> {
+  signup(user: Omit<User, "id"> & { allergies: string }): Observable<User> {
     return this.http.post<User>(this.signupUrl, user, this.httpOptions).pipe(
       catchError(this.errorHandlerService.handleError<User>("signup")),
     )
   }
+
 
   login(user: Pick<User, "email" | "password">): Observable<User> {
     return this.http.post<User>(this.loginUrl, user, this.httpOptions).pipe(

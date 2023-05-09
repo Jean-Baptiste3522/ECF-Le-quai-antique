@@ -17,6 +17,10 @@
         <small class="form-text text-danger" *ngIf="signUpForm.controls['password'].errors?.['minlength']">Le mot de passe doit contenir au moins 7 caractères</small>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Créer mon compte</button>
+    <div class="form-group">
+      <label for="allergies">Allergies :</label>
+      <input type="text" class="form-control" id="allergies" name="allergies" formControlName="allergies" placeholder="Allergies" />
+    </div>
+     <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Créer mon compte</button>
   </form>
 </div>
