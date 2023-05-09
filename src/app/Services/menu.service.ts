@@ -27,4 +27,14 @@ export class MenuService {
   getMenus(): Menu[] {
     return this.menu;
   }
+
+  updateMenu(menuItem: { nom: string, prix: number }): void {
+    this.menu.forEach((menu) => {
+      menu.formules.forEach((formule) => {
+        if (formule.nom === menuItem.nom) {
+          formule.prix = menuItem.prix;
+        }
+      });
+    });
+  }
 }

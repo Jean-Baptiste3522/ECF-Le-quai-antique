@@ -18,4 +18,5 @@
   <p class="row col-sm justify-content-center">{{carte.nom}} - {{carte.prix}} €</p>
   <button *ngIf="canEdit()" (click)="updateCarte(carte.id, carte.nom, carte.prix)">Modifier</button>
   <button *ngIf="canEdit()" (click)="deleteCarte(carte.id)">Supprimer</button>
+
 </div>
